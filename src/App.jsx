@@ -1,5 +1,5 @@
 import React from 'react';
-import AppRouter from './AppRouter.jsx'; // AppRouter import kiya (path updated)
+import AppRouter from './AppRouter.jsx'; // AppRouter import kiya
 
 function App() {
   return (
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
