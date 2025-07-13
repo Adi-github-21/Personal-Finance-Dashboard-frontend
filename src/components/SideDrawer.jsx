@@ -75,24 +75,47 @@ function SideDrawer({ open, toggleDrawer, onLogout }) {
               {item.header}
             </Typography>
           ) : (
+            // <-- Yahan 'ListItem' ko hamesha button={true} rakhenge
+            // Aur Link ko ListItem ke andar wrap karenge
             <ListItem
-              button
               key={item.text}
-              component={item.path ? Link : 'li'} // Agar path hai toh Link, warna li
-              to={item.path}
-              onClick={item.action || toggleDrawer} // Action hai toh action, warna drawer close
+              button // Hamesha button ki tarah behave karega
+              onClick={item.action || toggleDrawer} // Action ya drawer close
               sx={{
                 '&:hover': {
-                  bgcolor: 'primary.light', // Hover par primary light color
+                  bgcolor: 'primary.light',
                   color: 'white',
                 },
                 '&:hover .MuiListItemIcon-root': {
-                  color: 'white', // Hover par icon color white
+                  color: 'white',
                 },
+                // Link ke default styling ko override karein
+                padding: 0, // ListItem ka padding control karein
               }}
             >
-              <ListItemIcon sx={{ color: 'text.primary' }}>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
+              {item.path ? (
+                // Agar path hai toh Link ko andar wrap karein
+                <Link
+                  to={item.path}
+                  style={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '100%',
+                    padding: '8px 16px', // ListItem ke default padding ko yahan lagayein
+                  }}
+                >
+                  <ListItemIcon sx={{ color: 'text.primary' }}>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </Link>
+              ) : (
+                // Agar path nahi hai (jaise Logout), toh direct content
+                <>
+                  <ListItemIcon sx={{ color: 'text.primary' }}>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.text} />
+                </>
+              )}
             </ListItem>
           )
         ))}

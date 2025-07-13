@@ -5,6 +5,7 @@ import { Box, Typography, Button } from '@mui/material';
 import Register from './components/Register.jsx';
 import Login from './components/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
+import BankAccounts from './pages/BankAccounts.jsx';
 import MainLayout from './layouts/MainLayout.jsx';
 
 // PrivateRoute component jo check karega ki user logged in hai ya nahi
@@ -46,7 +47,7 @@ function AppRouter() {
           element={
             <PrivateRoute>
               <MainLayout>
-                <Box sx={{ mt: 4, textAlign: 'center' }}><Typography variant="h5">Bank Accounts Page</Typography></Box>
+                <BankAccounts />
               </MainLayout>
             </PrivateRoute>
           }
