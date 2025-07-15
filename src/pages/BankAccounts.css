@@ -1,0 +1,222 @@
+/* BankAccounts.css */
+
+/* Main Page Container */
+.bank-accounts-page-container {
+  min-height: 100vh;
+  background:  url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center / cover;
+  /* background-color: #f3f4f6; */
+  font-family: 'Inter', sans-serif; /* font-inter */
+  color: #374151; /* text-gray-800 */
+}
+
+.banner-wrapper {
+  margin-top: 0rem; /* Add desired margin from the top */
+  padding-left: 1rem; /* Optional: Add some horizontal padding to align with content */
+  padding-right: 1rem; /* Optional: Add some horizontal padding to align with content */
+}
+
+/* Top Banner/Card */
+.bank-accounts-banner {
+  position: relative;
+  /* Updated: Background Image instead of gradient */
+  background: url('https://www.canva.com/design/DAGtKIiEJkk/kU_gZO3kANIOFjjJCVbi9w/view?utm_content=DAGtKIiEJkk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3af343e3c8') no-repeat center center / cover;
+  color: white;
+  padding: 5rem 4rem; /* Adjusted: p-8 was too much, now p-2rem */
+  padding-bottom: 5rem; /* md:p-12 */
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem; /* rounded-b-3xl */
+  border-bottom-right-radius: 2rem; /* rounded-b-3xl */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  overflow: hidden;
+}
+
+.bank-accounts-banner-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2; /* Keep shapes but make them subtle over image */
+}
+
+.bank-accounts-banner-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .bank-accounts-banner-content {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Add New Account Button in Banner */
+.add-new-account-button-banner {
+  margin-top: 1.5rem; /* mt-6 */
+  padding: 0.75rem 1.5rem; /* px-6 py-3 */
+  background-color: white;
+  color: #2563eb; /* text-blue-700 */
+  font-weight: 600; /* font-semibold */
+  border-radius: 9999px; /* rounded-full */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  transition: all 0.3s ease-in-out;
+}
+
+.add-new-account-button-banner:hover {
+  background-color: #f3f4f6; /* hover:bg-gray-100 */
+  transform: scale(1.05); /* transform hover:scale-105 */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .add-new-account-button-banner {
+    margin-top: 0; /* md:mt-0 */
+  }
+}
+
+/* Account Listing Grid */
+.bank-accounts-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* grid-cols-1 */
+  gap: 1.5rem; /* gap-6 */
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .bank-accounts-grid {
+    grid-template-columns: repeat(2, 1fr); /* sm:grid-cols-2 */
+  }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .bank-accounts-grid {
+    grid-template-columns: repeat(3, 1fr); /* lg:grid-cols-3 */
+  }
+}
+
+/* Individual Bank Account Card */
+.bank-account-card {
+  background-color: white;
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb; /* border border-gray-200 */
+  transition: all 0.3s ease-in-out;
+  transform: translateY(0); /* Initial state for hover effect */
+}
+
+.bank-account-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+  transform: translateY(-0.25rem); /* hover:-translate-y-1 */
+}
+
+/* Updated: Profile Photo Size */
+.bank-account-card-icon-container {
+  flex-shrink: 0;
+  width: 100px; /* Increased size for 10rs coin effect */
+  height: 100px; /* Increased size */
+  background-color: #bfdbfe; /* bg-blue-100 */
+  border-radius: 9999px; /* rounded-full */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /* shadow-inner */
+  overflow: hidden; /* Ensure image fits */
+}
+
+.bank-account-card-icon-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
+}
+
+.bank-account-card-icon-container .MuiSvgIcon-root {
+  font-size: 64px !important; /* Increased icon size */
+  color: #2563eb; /* blue-600 */
+}
+
+
+.bank-account-card-details {
+  flex-grow: 1;
+  margin-left: 1rem; /* space-x-4 */
+}
+
+.bank-account-card-balance-value {
+  font-weight: 700; /* font-bold */
+  color: #1f2937; /* text-gray-800 */
+}
+
+.bank-account-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* space-y-2 */
+}
+
+/* Edit/Delete Buttons in Card */
+.card-action-button {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0;
+  transition: all 0.2s ease-in-out; /* Added all for smoother transition */
+}
+
+.card-action-button:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.card-action-button.edit {
+  background-color: #3b82f6; /* blue-500 */
+  color: white;
+}
+.card-action-button.edit:hover {
+  background-color: #2563eb; /* blue-600 */
+}
+
+.card-action-button.delete {
+  background-color: #ef4444; /* red-500 */
+  color: white;
+}
+.card-action-button.delete:hover {
+  background-color: #dc2626; /* red-600 */
+}
+
+/* General MUI overrides for consistency (optional, can be in theme) */
+.MuiDialogTitle-root {
+  background-color: #2563eb !important; /* primary.main */
+  color: white !important;
+  padding: 1rem 1.5rem !important; /* py-2 px-3 */
+}
+
+.MuiDialogActions-root {
+  padding: 1.5rem !important; /* p-3 */
+  justify-content: space-between !important;
+}
+
+.MuiButton-containedPrimary {
+  background-color: #2563eb !important;
+}
+.MuiButton-containedPrimary:hover {
+  background-color: #1d4ed8 !important;
+}
+
+.MuiButton-outlinedError {
+  border-color: #ef4444 !important;
+  color: #ef4444 !important;
+}
+.MuiButton-outlinedError:hover {
+  background-color: rgba(239, 68, 68, 0.04) !important;
+}
+
+.MuiAlert-root {
+  border-radius: 0.5rem !important; /* rounded-md */
+}

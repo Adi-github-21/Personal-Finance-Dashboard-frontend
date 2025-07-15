@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Toolbar } from '@mui/material';
+import { Box } from '@mui/material'; // Removed Toolbar as it's not needed here
 import Navbar from '../components/Navbar.jsx';
-import SideDrawer from '../components/SideDrawer.jsx';
+import SideDrawer from '../components/SideDrawer.jsx'; // Assuming this component exists
 import Footer from '../components/Footer.jsx';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,24 +26,33 @@ function MainLayout({ children }) {
   const userName = localStorage.getItem('name') || '';
 
   return (
+    // Main container for the entire layout
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      {/* Navbar component */}
       <Navbar
         toggleDrawer={toggleDrawer}
         isLoggedIn={isLoggedIn}
         userName={userName}
         onLogout={handleLogout}
       />
-      {isLoggedIn && ( // Drawer sirf logged in hone par dikhega
+
+      {/* Side Drawer, only visible when logged in */}
+      {isLoggedIn && (
         <SideDrawer
           open={drawerOpen}
           toggleDrawer={toggleDrawer}
           onLogout={handleLogout}
         />
       )}
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar /> {/* Navbar ke neeche space ke liye */}
+
+      {/* Main content area that grows to fill available space */}
+      {/* Removed 'p: 3' from here. Page-specific padding should be handled within each page component (e.g., BankAccounts.jsx's Container). */}
+      {/* Removed <Toolbar /> as it was creating extra space below the Navbar. */}
+      <Box component="main" sx={{ flexGrow: 1 }}>
         {children} {/* Yahan page ka content render hoga */}
       </Box>
+
+      {/* Footer component */}
       <Footer />
     </Box>
   );
