@@ -1,0 +1,77 @@
+/* personal-finance-dashboard-frontend/src/pages/Investments.css */
+
+/* Main Container and Header */
+.investments-container {
+  background:  url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center / cover;
+  padding: 32px; /* MUI Container default is usually 24px, increasing for more space */
+}
+
+.investments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* .investments-title {
+  No specific styling needed here as Typography variant="h4" handles font size
+} */
+
+/* Table Specific Styling */
+.investments-table-paper {
+  border-radius: 12px; /* Rounded corners for the paper */
+  overflow: hidden; /* Ensures content respects border-radius */
+}
+
+/* .investments-table {
+   Basic table styles 
+} */
+
+.investments-table-head .MuiTableCell-root {
+  background-color: #f5f5f5; /* Light grey background for table header */
+  font-weight: bold;
+  color: #333;
+  padding: 12px 16px; /* Adjust padding if needed */
+  border-bottom: 1px solid #e0e0e0; /* Light border at bottom of header cells */
+  white-space: nowrap; /* Prevent text wrapping in headers */
+}
+
+/* .investments-table-row {
+   No specific row styling, MUI handles alternating colors/hover if enabled 
+} */
+
+.investments-table-cell {
+  padding: 10px 16px; /* Slightly less padding for data cells */
+  border-bottom: 1px solid #f0f0f0; /* Lighter border for rows */
+}
+
+/* Action Buttons within table */
+.investments-action-buttons {
+  display: flex;
+  justify-content: center; /* Center buttons if align="center" is used on TableCell */
+}
+
+/* Specific styling for profit/loss text (if not handled by MUI 'secondary'/'error' colors) */
+/* You can override MUI's color classes directly if needed, or rely on sx prop for this */
+.text-profit {
+  color: #4caf50; /* Green color for profit */
+  font-weight: bold;
+}
+
+.text-loss {
+  color: #f44336; /* Red color for loss */
+  font-weight: bold;
+}
+
+/* Style for the "Add New Investment" button if needed outside MUI defaults */
+/* .add-investment-button {
+   Add specific styles here if you want it to differ from default Material-UI button 
+ } */
+
+/* Example of a general button style if you want all buttons to have a specific look */
+/*
+.MuiButton-root {
+    text-transform: none; // To remove uppercase
+    border-radius: 8px;
+}
+*/
