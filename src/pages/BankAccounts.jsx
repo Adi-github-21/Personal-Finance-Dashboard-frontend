@@ -16,9 +16,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // For default profile photo/icon
 
-import BankAccountFormModal from '../components/BankAccountFormModal.jsx'; // Your separate modal component
-import API from '../api.jsx'; // Your API instance
-import './BankAccounts.css'; // Import the new CSS file
+import BankAccountFormModal from '../components/BankAccountFormModal.jsx'; //separate modal component
+import API from '../api.jsx'; //  API instance
+import './BankAccounts.css'; // Import the CSS file
 
 // Custom confirmation dialog component (replaces window.confirm for better UI)
 const CustomConfirmDialog = ({ open, title, message, onConfirm, onCancel }) => {
@@ -120,11 +120,9 @@ function BankAccounts() {
 
   return (
     <div className="bank-accounts-page-container">
-      {/* NEW: Wrapper for the banner to add top margin */}
       <Box className="banner-wrapper">
         {/* Top Banner/Card */}
         <div className="bank-accounts-banner">
-          {/* Abstract shapes for background */}
           <div className="bank-accounts-banner-shapes">
             <svg className="absolute top-0 left-0 w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
               <path d="M0,0 L100,0 L100,50 C80,80 20,80 0,50 Z" fill="currentColor" />

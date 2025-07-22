@@ -1,4 +1,3 @@
-/* BankAccounts.css */
 
 /* Main Page Container */
 .bank-accounts-page-container {
@@ -11,17 +10,17 @@
 
 .banner-wrapper {
   margin-top: 0rem; /* Add desired margin from the top */
-  padding-left: 1rem; /* Optional: Add some horizontal padding to align with content */
-  padding-right: 1rem; /* Optional: Add some horizontal padding to align with content */
+  padding-left: 1rem; /*  some horizontal padding to align with content */
+  padding-right: 1rem; /* some horizontal padding to align with content */
 }
 
 /* Top Banner/Card */
 .bank-accounts-banner {
   position: relative;
-  /* Updated: Background Image instead of gradient */
+  /* Background Image */
   background: url('https://www.canva.com/design/DAGtKIiEJkk/kU_gZO3kANIOFjjJCVbi9w/view?utm_content=DAGtKIiEJkk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3af343e3c8') no-repeat center center / cover;
   color: white;
-  padding: 5rem 4rem; /* Adjusted: p-8 was too much, now p-2rem */
+  padding: 5rem 4rem; 
   padding-bottom: 5rem; /* md:p-12 */
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;

@@ -3,7 +3,7 @@
 /* NEW: Wrapper for the entire Investments page to apply full-page background */
 .investments-page-wrapper {
   min-height: 100vh; /* Ensure it covers the full viewport height */
-  background: url('https://cdn.magicdecor.in/com/2024/03/01151838/Stock-Market-Analyst-Wallpaper-Mural.jpg') no-repeat center center / cover;
+  background: url('https://wallpapers.com/images/hd/abstract-grid-pattern-backdrop-1urnmdgfwdybkke0.jpg') no-repeat center center / cover;
   background-attachment: fixed; /* Optional: Makes the background fixed while scrolling */
   display: flex; /* Use flex to center content vertically if needed, or just for min-height */
   flex-direction: column; /* Stack children vertically */
@@ -32,12 +32,9 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
-  /* color: white; */ /* Uncomment if text needs to be white on dark background */
+  color: white;
 }
 
-/* .investments-title {
-  No specific styling needed here as Typography variant="h4" handles font size
-} */
 
 /* Table Specific Styling */
 .investments-table-paper {
@@ -58,9 +55,7 @@
   white-space: nowrap; /* Prevent text wrapping in headers */
 }
 
-/* .investments-table-row {
-   No specific row styling, MUI handles alternating colors/hover if enabled
-} */
+
 
 .investments-table-cell {
   padding: 10px 16px; /* Slightly less padding for data cells */
@@ -74,15 +69,6 @@
   gap: 8px; /* Space between buttons */
 }
 
-/* Removed specific button styling classes as they are now in sx prop in JSX */
-/*
-.investments-action-button { ... }
-.investments-action-button.edit { ... }
-.investments-action-button.edit:hover { ... }
-.investments-action-button.delete { ... }
-.investments-action-button.delete:hover { ... }
-*/
-
 /* Specific styling for profit/loss text (if not handled by MUI 'secondary'/'error' colors) */
 /* These classes are already good for P/L coloring */
 .text-profit {
@@ -95,15 +81,4 @@
   font-weight: bold;
 }
 
-/* Style for the "Add New Investment" button if needed outside MUI defaults */
-/* .add-investment-button {
-   Add specific styles here if you want it to differ from default Material-UI button
- } */
 
-/* Example of a general button style if you want all buttons to have a specific look */
-/*
-.MuiButton-root {
-   text-transform: none; // To remove uppercase
-   border-radius: 8px;
-}
-*/

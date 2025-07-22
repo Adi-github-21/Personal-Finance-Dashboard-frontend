@@ -29,14 +29,14 @@ function InvestmentFormModal({ open, handleClose , onInvestmentSaved , currentIn
             setCurrentMarketPrice(currentInvestment.currentMarketPrice !== undefined ? currentInvestment.currentMarketPrice.toString() : '');
             setPurchaseDate(currentInvestment.purchaseDate ? new Date(currentInvestment.purchaseDate).toISOString().split('T')[0] : '');
         } else {
-            //form reset ke karee
+            //form reset 
             setStockName('');
             setQuantity('');
             setAvgBuyPrice('');
             setCurrentMarketPrice('');
             setPurchaseDate('');
         }
-        setError(''); //modal khulne par error clear hoga esse
+        setError(''); //modal khulne par error clear hoga 
       },[open, currentInvestment]);
 
       const handleSubmit = async (e) => {
@@ -70,7 +70,7 @@ function InvestmentFormModal({ open, handleClose , onInvestmentSaved , currentIn
 
     return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-      <DialogTitle>{currentInvestment ? 'Investment Edit Karein' : 'Naya Investment Add Karein'}</DialogTitle>
+      <DialogTitle>{currentInvestment ? 'Edit Investment' : 'Add new Investment'}</DialogTitle>
       <DialogContent>
         {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
@@ -78,7 +78,7 @@ function InvestmentFormModal({ open, handleClose , onInvestmentSaved , currentIn
             autoFocus
             margin="dense"
             id="stockName"
-            label="Stock Ka Naam"
+            label="Stock Name"
             type="text"
             fullWidth
             variant="outlined"
@@ -139,10 +139,10 @@ function InvestmentFormModal({ open, handleClose , onInvestmentSaved , currentIn
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary" disabled={loading}>
-          Cancel Karein
+          Cancel
         </Button>
         <Button onClick={handleSubmit} color="secondary" variant="contained" disabled={loading}>
-          {loading ? <CircularProgress size={24} /> : (currentInvestment ? 'Update Karein' : 'Add Karein')}
+          {loading ? <CircularProgress size={24} /> : (currentInvestment ? 'Update' : 'Add')}
         </Button>
       </DialogActions>
     </Dialog>
