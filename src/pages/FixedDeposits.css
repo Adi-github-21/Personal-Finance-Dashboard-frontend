@@ -1,0 +1,160 @@
+.fd-container {
+  padding: 32px;
+}
+
+.fd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.fd-title {
+  /* Handled by MUI Typography */
+}
+
+/* Summary Dashboard Cards */
+.summary-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 16px; /* Space between cards */
+  margin-bottom: 32px;
+}
+
+.summary-card {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #212121 !important; /* Dark background as per prototype */
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px; /* Ensure cards have some height */
+}
+
+.summary-card .MuiTypography-h6 {
+  color: #bdbdbd !important; /* Lighter text for labels */
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.summary-card .MuiTypography-h5 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Specific styling for the green card (Average Interest Rate) */
+.summary-card.green-bg {
+  background-color: #00BFA5 !important; /* Secondary color from theme */
+  color: white !important;
+}
+
+/* Maturity Timeline/Calendar */
+.maturity-timeline-section {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.fd-table-section {
+  flex: 2 !important; /* Table takes more space */
+}
+
+.calendar-section {
+  flex: 1; /* Calendar takes less space */
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #212121 !important; /* Dark background as per prototype */
+  color: white !important;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2) !important; /* Soft shadow */
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  color: #bdbdbd !important; /* Lighter text for days */
+}
+
+.calendar-day-header {
+  font-weight: bold !important;
+  padding-bottom: 8px;
+}
+
+.calendar-day {
+  padding: 8px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out !important;
+}
+
+.calendar-day.current-month {
+  color: white !important;
+}
+
+.calendar-day.highlighted {
+  background-color: #00BFA5 !important; /* Highlight color for maturity dates */
+  color: white !important;
+  font-weight: bold;
+}
+
+.calendar-day.today {
+  border: 1px solid #2196F3; /* Primary color border for today */
+}
+
+/* Table Styling */
+.fd-table-paper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.fd-table-head .MuiTableCell-root {
+  background-color: #f5f5f5 !important;
+  font-weight: bold;
+  color: #333 !important;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0 !important;
+  white-space: nowrap;
+}
+
+.fd-table-cell {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background-color: #e0f2f1 !important; /* Light teal */
+  color: #00897B !important; /* Dark teal */
+}
+
+.status-nearing-maturity {
+  background-color: #fff3e0 !important; /* Light orange */
+  color: #ef6c00 !important; /* Dark orange */
+}
+
+.status-matured {
+  background-color: #ffebee !important; /* Light red */
+  color: #d32f2f !important; /* Dark red */
+}
+
+/* Export Button */
+.export-button {
+  text-transform: none; /* Remove uppercase */
+}

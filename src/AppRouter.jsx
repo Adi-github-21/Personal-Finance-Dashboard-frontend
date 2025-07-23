@@ -7,6 +7,7 @@ import Login from './components/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import BankAccounts from './pages/BankAccounts.jsx';
 import Investments from './pages/Investments.jsx';
+import FixedDeposits from './pages/FixedDeposits.jsx';
 import MainLayout from './layouts/MainLayout.jsx';
 
 // PrivateRoute component jo check karega ki user logged in hai ya nahi
@@ -68,7 +69,7 @@ function AppRouter() {
           element={
             <PrivateRoute>
               <MainLayout>
-                <Box sx={{ mt: 4, textAlign: 'center' }}><Typography variant="h5">Fixed Deposits Page</Typography></Box>
+                <FixedDeposits />
               </MainLayout>
             </PrivateRoute>
           }
