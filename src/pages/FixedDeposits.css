@@ -1,5 +1,29 @@
+/* personal-finance-dashboard-frontend/src/pages/FixedDeposits.css */
+
+/* NEW: Wrapper for the entire FixedDeposits page to apply full-page background */
+.fd-page-wrapper {
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+  /* UPDATED: Use your downloaded image path here */
+  background: url('/images/Untitled design (2).png') no-repeat center center / cover;
+  background-attachment: fixed; /* Optional: Makes the background fixed while scrolling */
+  display: flex; /* Use flex to center content vertically if needed, or just for min-height */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center; /* Center content horizontally */
+  padding-top: 2rem; /* Add some top padding to separate from Navbar */
+  padding-bottom: 2rem; /* Add some bottom padding before footer */
+}
+
+/* Main Container (inside the wrapper) */
 .fd-container {
-  padding: 32px;
+  /* Background removed from here */
+  padding: 32px; /* MUI Container default is usually 24px, increasing for more space */
+  width: 100%; /* Ensure container takes full width within its max-width */
+  max-width: 1280px; /* Adjust as per your maxWidth="lg" in MUI */
+  /* Add a background to the container itself if you want it to stand out from the full page background */
+  background-color: transparent !important; /* Slightly transparent white background for content readability */
+  border-radius: 12px; /* Match paper border-radius */
+  /* box-shadow: 0 4px 10px rgba(0,0,0,0.1); */
 }
 
 .fd-header {
@@ -7,6 +31,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  color: #00BFA5 !important;
 }
 
 .fd-title {
@@ -111,12 +136,13 @@
 
 /* Table Styling */
 .fd-table-paper {
+  background-color: lightblue !important;
   border-radius: 12px;
   overflow: hidden;
 }
 
 .fd-table-head .MuiTableCell-root {
-  background-color: #f5f5f5 !important;
+  background-color: #00BFA5 !important;
   font-weight: bold;
   color: #333 !important;
   padding: 12px 16px;

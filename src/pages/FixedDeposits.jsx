@@ -229,6 +229,7 @@ function FixedDeposits() {
 
 
   return (
+   <Box className="fd-page-wrapper"> 
     <Container maxWidth="lg" className="fd-container">
       <Box className="fd-header">
         <Typography variant="h4" component="h1" className="fd-title">
@@ -417,6 +418,7 @@ function FixedDeposits() {
         currentFixedDeposit={currentFixedDepositToEdit}
       />
     </Container>
+   </Box> 
   );
 }
 
