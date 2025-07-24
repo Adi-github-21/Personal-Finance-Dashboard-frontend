@@ -1,0 +1,166 @@
+.emi-container {
+  padding: 32px;
+}
+
+.emi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* Summary Dashboard Cards */
+.emi-summary-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted for 3 cards */
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.emi-summary-card {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #212121; /* Dark background as per prototype */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.emi-summary-card .MuiTypography-h6 {
+  color: #bdbdbd; /* Lighter text for labels */
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.emi-summary-card .MuiTypography-h5 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Main Content Layout (Table and Calendar) */
+.emi-main-content-section {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap; /* For responsiveness */
+}
+
+.emi-table-section {
+  flex: 2; /* Table takes more space */
+  min-width: 600px; /* Minimum width for table to avoid squishing */
+}
+
+.emi-calendar-section {
+  flex: 1; /* Calendar takes less space */
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #212121; /* Dark background as per prototype */
+  color: white;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  min-width: 280px; /* Minimum width for calendar */
+}
+
+/* Table Styling */
+.emi-table-paper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.emi-table-head .MuiTableCell-root {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.emi-table-cell {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  height: 8px; /* Height of the progress bar */
+  overflow: hidden; /* Ensure fill stays within bounds */
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #00BFA5; /* Secondary color for progress */
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* EMI Breakdown Pie Chart (Conic Gradient) */
+.pie-chart-container {
+  width: 40px; /* Size of the pie chart */
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0; /* Default background for empty part */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white; /* Text color inside pie chart */
+  overflow: hidden; /* Ensure gradient stays within circle */
+}
+
+/* Calendar Styling (Similar to Fixed Deposits) */
+.emi-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.emi-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  color: #bdbdbd; /* Lighter text for days */
+}
+
+.emi-calendar-day-header {
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+
+.emi-calendar-day {
+  padding: 8px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.emi-calendar-day.current-month {
+  color: white;
+}
+
+.emi-calendar-day.highlighted {
+  background-color: #2196F3; /* Primary color for EMI due dates */
+  color: white;
+  font-weight: bold;
+}
+
+.emi-calendar-day.today {
+  border: 1px solid #00BFA5; /* Secondary color border for today */
+}
+
+/* Prepayment Calculator Section */
+.prepayment-calculator-section {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #212121; /* Dark background */
+  color: white;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 24px;
+}
