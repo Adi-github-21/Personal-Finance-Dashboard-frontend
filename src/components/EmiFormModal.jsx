@@ -51,7 +51,7 @@ function EmiFormModal({ open, handleClose, onLoanSaved, currentLoan }) {
       setLoanName(currentLoan.loanName || '');
       setLoanType(currentLoan.loanType || 'Personal Loan');
       setTotalLoanAmount(currentLoan.totalLoanAmount !== undefined ? currentLoan.totalLoanAmount.toString() : '');
-      setInterestRate(currentLoan.interestRate !== undefined ? currentLoan.interestLoanRate.toString() : '');
+      setInterestRate(currentLoan.interestRate !== undefined ? currentLoan.interestRate.toString() : '');
       setLoanTenureMonths(currentLoan.loanTenureMonths !== undefined ? currentLoan.loanTenureMonths.toString() : '');
       setEmiAmount(currentLoan.emiAmount !== undefined ? currentLoan.emiAmount.toString() : '');
       setStartDate(currentLoan.startDate ? new Date(currentLoan.startDate).toISOString().split('T')[0] : '');

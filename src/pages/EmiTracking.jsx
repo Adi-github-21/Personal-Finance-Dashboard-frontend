@@ -17,6 +17,7 @@ import {
   Grid,
   Card,
   CardContent,
+  useTheme,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -24,6 +25,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
+// <-- Naye Icons import kiye
+import HomeIcon from '@mui/icons-material/Home';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import PersonIcon from '@mui/icons-material/Person';
+import SchoolIcon from '@mui/icons-material/School';
+// HelpOutlineIcon already imported for SideDrawer, but good to ensure it's here too if used directly
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'; // Already there, just confirming
+
+
 import EmiFormModal from '../components/EmiFormModal.jsx';
 import API from '../api.jsx';
 
@@ -95,6 +106,8 @@ const generateCalendarDays = (year, month, emiDueDates) => {
 
 
 function EmiTracking() {
+   const theme = useTheme(); 
+
   const [openModal, setOpenModal] = useState(false);
   const [loans, setLoans] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -223,6 +236,7 @@ function EmiTracking() {
 
 
   return (
+   <Box className="emi-page-wrapper">
     <Container maxWidth="lg" className="emi-container">
       <Box className="emi-header">
         <Typography variant="h4" component="h1" className="emi-title">
@@ -242,7 +256,7 @@ function EmiTracking() {
 
       {/* Summary Dashboard */}
       <Grid container spacing={2} className="emi-summary-dashboard">
-        <Grid xs={12} sm={4}>
+        <Grid item xs={12} sm={4}>
           <Card className="emi-summary-card">
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -254,7 +268,7 @@ function EmiTracking() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid xs={12} sm={4}>
+        <Grid item xs={12} sm={4}>
           <Card className="emi-summary-card">
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -266,7 +280,7 @@ function EmiTracking() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid xs={12} sm={4}>
+        <Grid item xs={12} sm={4}>
           <Card className="emi-summary-card">
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -406,12 +420,12 @@ function EmiTracking() {
           </Box>
           <Grid container className="emi-calendar-grid">
             {daysOfWeek.map(day => (
-              <Grid xs={1.71} key={day}>
+              <Grid item xs={1.71} key={day}>
                 <Typography variant="caption" className="emi-calendar-day-header">{day}</Typography>
               </Grid>
             ))}
             {calendarDays.map((dayData, index) => (
-              <Grid xs={1.71} key={index}>
+              <Grid item xs={1.71} key={index}>
                 <Typography
                   variant="body2"
                   className={`emi-calendar-day ${dayData.isCurrentMonth ? 'current-month' : ''} ${dayData.isHighlighted ? 'highlighted' : ''} ${dayData.isToday ? 'today' : ''}`}
@@ -431,6 +445,7 @@ function EmiTracking() {
         currentLoan={currentLoanToEdit}
       />
     </Container>
+   </Box> 
   );
 }
 
