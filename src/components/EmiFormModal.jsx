@@ -124,7 +124,7 @@ function EmiFormModal({ open, handleClose, onLoanSaved, currentLoan }) {
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-      <DialogTitle>{currentLoan ? 'Loan Edit Karein' : 'Naya Loan Add Karein'}</DialogTitle>
+      <DialogTitle>{currentLoan ? 'Edit Loan Details' : 'Add new Laon'}</DialogTitle>
       <DialogContent>
         {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
@@ -132,7 +132,7 @@ function EmiFormModal({ open, handleClose, onLoanSaved, currentLoan }) {
             autoFocus
             margin="dense"
             id="loanName"
-            label="Loan Ka Naam"
+            label="Loan Name"
             type="text"
             fullWidth
             variant="outlined"
@@ -193,7 +193,7 @@ function EmiFormModal({ open, handleClose, onLoanSaved, currentLoan }) {
             inputProps={{ step: "1" }}
           />
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1, mb: 2 }}>
-            Calculated EMI: ₹ {calculatedEmi} (Agar aap EMI amount nahi denge toh yeh use hoga)
+            Calculated EMI: ₹ {calculatedEmi} (If you dont give EMI amount then will be used)
           </Typography>
           <TextField
             margin="dense"
@@ -263,10 +263,10 @@ function EmiFormModal({ open, handleClose, onLoanSaved, currentLoan }) {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary" disabled={loading}>
-          Cancel Karein
+          Cancel
         </Button>
         <Button onClick={handleSubmit} color="secondary" variant="contained" disabled={loading}>
-          {loading ? <CircularProgress size={24} /> : (currentLoan ? 'Update Karein' : 'Add Karein')}
+          {loading ? <CircularProgress size={24} /> : (currentLoan ? 'Update' : 'Add')}
         </Button>
       </DialogActions>
     </Dialog>

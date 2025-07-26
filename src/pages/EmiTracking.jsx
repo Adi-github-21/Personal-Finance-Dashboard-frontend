@@ -36,6 +36,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline'; // Already there,
 
 
 import EmiFormModal from '../components/EmiFormModal.jsx';
+import PrepaymentCalculatorModal from '../components/PrepaymentCalculatorModal.jsx';
 import API from '../api.jsx';
 
 import './EmiTracking.css'; // <-- Naya: CSS file import kiya
@@ -113,6 +114,9 @@ function EmiTracking() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [currentLoanToEdit, setCurrentLoanToEdit] = useState(null);
+  const [openPrepaymentModal, setOpenPrepaymentModal] = useState(false); 
+  const [selectedLoanForPrepayment, setSelectedLoanForPrepayment] = useState(null);
+
 
   // For Summary Dashboard
   const [totalOutstandingDebt, setTotalOutstandingDebt] = useState(0);
@@ -140,13 +144,17 @@ function EmiTracking() {
 
       fetchedLoans.forEach(loan => {
         sumOutstandingDebt += loan.remainingAmount;
-        sumMonthlyEmiOutflow += loan.emiAmount;
+
+        // <-- Naya: Sirf active loans ki EMI ko count karein
+        if (loan.remainingAmount > 0) {
+          sumMonthlyEmiOutflow += loan.emiAmount;
+        }
 
         const projectedEndDate = calculateProjectedEndDate(loan.startDate, loan.loanTenureMonths);
         if (latestDebtFreeDate === null || projectedEndDate > latestDebtFreeDate) {
           latestDebtFreeDate = projectedEndDate;
         }
-        allEmiDueDates.push(new Date(loan.nextDueDate)); // Collect all next due dates for calendar
+        allEmiDueDates.push(new Date(loan.nextDueDate));
       });
 
       setTotalOutstandingDebt(sumOutstandingDebt);
@@ -162,7 +170,7 @@ function EmiTracking() {
       setEmiDueDatesInMonth(currentMonthDueDates);
 
     } catch (err) {
-      setError(err.response?.data?.message || 'Loans fetch karne mein dikkat hui.');
+      setError(err.response?.data?.message || 'Problem in feteching loans.');
     } finally {
       setLoading(false);
     }
@@ -193,12 +201,25 @@ function EmiTracking() {
   };
 
   const handleDeleteLoan = async (id) => {
-    if (window.confirm('Kya aap is loan ko delete karna chahte hain?')) {
+    if (window.confirm('Do you really want to delete this loan?')) {
       try {
         await API.delete(`/loans/${id}`);
         fetchLoans(); // Data refresh karein after delete
       } catch (err) {
-        setError(err.response?.data?.message || 'Loan delete karne mein dikkat hui.');
+        setError(err.response?.data?.message || 'Problem  in deleting loan.');
+      }
+    }
+  };
+
+  // Naya: handlePayEmi function
+  const handlePayEmi = async (loanId, emiAmount) => {
+    if (window.confirm(`Do you want to record the EMI payment of ₹${emiAmount.toLocaleString('en-IN')} ?`)) {
+      try {
+        // Backend API call to record payment
+        await API.post(`/loans/${loanId}/pay-emi`, { amountPaid: emiAmount });
+        fetchLoans(); // Data refresh karein
+      } catch (err) {
+        setError(err.response?.data?.message || 'Problem in recording EMI payment.');
       }
     }
   };
@@ -220,6 +241,17 @@ function EmiTracking() {
     } else {
       setCurrentCalendarMonth(prev => prev + 1);
     }
+  };
+
+   // Naya: Prepayment modal handlers
+  const handleOpenPrepaymentModal = (loan) => {
+    setSelectedLoanForPrepayment(loan);
+    setOpenPrepaymentModal(true);
+  };
+
+  const handleClosePrepaymentModal = () => {
+    setOpenPrepaymentModal(false);
+    setSelectedLoanForPrepayment(null);
   };
 
   if (loading) {
@@ -248,7 +280,7 @@ function EmiTracking() {
           startIcon={<AddIcon />}
           onClick={handleOpenAddModal}
         >
-          Naya Loan Add Karein
+          ADD New Loan
         </Button>
       </Box>
 
@@ -299,7 +331,7 @@ function EmiTracking() {
         <Box className="emi-table-section"> {/* Loan Table Section */}
           {loans.length === 0 ? (
             <Typography variant="h6" color="text.secondary" sx={{ textAlign: 'center', mt: 5 }}>
-              Abhi koi active loan nahi hai. Naya add karein!
+              No Active loan detected. Add new loans!
             </Typography>
           ) : (
             <Paper elevation={3} className="emi-table-paper">
@@ -347,7 +379,19 @@ function EmiTracking() {
                             </Box>
                           </TableCell>
                           <TableCell align="right" className="emi-table-cell">₹ {loan.totalLoanAmount.toLocaleString('en-IN')}</TableCell>
-                          <TableCell align="right" className="emi-table-cell">₹ {loan.remainingAmount.toLocaleString('en-IN')}</TableCell>
+                          <TableCell align="right" className="emi-table-cell">
+                              ₹ {loan.remainingAmount.toLocaleString('en-IN')}
+                              {loan.remainingAmount > 0 && ( // Agar loan active hai toh Pay EMI button dikhao
+                                <Button
+                                  variant="outlined"
+                                  size="small"
+                                  sx={{ ml: 1, textTransform: 'none' }}
+                                  onClick={() => handlePayEmi(loan._id, loan.emiAmount)}
+                                >
+                                  Pay EMI
+                                </Button>
+                              )}
+                            </TableCell>
                           <TableCell align="right" className="emi-table-cell">₹ {loan.emiAmount.toLocaleString('en-IN')}</TableCell>
                           <TableCell align="right" className="emi-table-cell">{new Date(loan.nextDueDate).toLocaleDateString()}</TableCell>
                           <TableCell align="right" className="emi-table-cell">{loan.interestRate.toFixed(2)}%</TableCell>
@@ -399,9 +443,22 @@ function EmiTracking() {
             <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                 Plan an extra payment to save on interest and reduce tenure.
             </Typography>
-            <Button variant="contained" color="primary" sx={{ textTransform: 'none' }}>
-                Plan a Prepayment
-            </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                sx={{ textTransform: 'none' }}
+                onClick={() => {
+                    // Agar koi loan hai toh hi calculator kholo, ya ek dropdown se select karne ka option do
+                    if (loans.length > 0) {
+                        handleOpenPrepaymentModal(loans[0]); // Abhi ke liye pehla loan select kar rahe hain
+                                                             // Ya aap ek dropdown se loan select karwa sakte hain
+                    } else {
+                        setError("There is no loan to calculate prepayment.");
+                    }
+                }}
+              >
+                  Plan a Prepayment
+              </Button>
           </Box>
         </Box>
 
@@ -444,6 +501,15 @@ function EmiTracking() {
         onLoanSaved={handleLoanSaved}
         currentLoan={currentLoanToEdit}
       />
+
+      {/* Naya: Prepayment Calculator Modal */}
+        {selectedLoanForPrepayment && ( // Sirf tab render karein jab koi loan selected ho
+          <PrepaymentCalculatorModal
+            open={openPrepaymentModal}
+            handleClose={handleClosePrepaymentModal}
+            loan={selectedLoanForPrepayment}
+          />
+        )}
     </Container>
    </Box> 
   );
