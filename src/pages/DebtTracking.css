@@ -1,5 +1,22 @@
+.debt-page-wrapper {
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+  background: url('/images/Debt.png') no-repeat center center / cover;
+  background-attachment: fixed; 
+  display: flex; /* Use flex to center content vertically if needed, or just for min-height */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center; /* Center content horizontally */
+  padding-top: 2rem; /* Add some top padding to separate from Navbar */
+  padding-bottom: 2rem; /* Add some bottom padding before footer */
+}
+
 .debt-container {
-  padding: 32px;
+  padding: 32px; /* MUI Container default is usually 24px, increasing for more space */
+  width: 100%; /* Ensure container takes full width within its max-width */
+  max-width: 1280px; /* Adjust as per your maxWidth="lg" in MUI */
+  background-color: transparent !important; /* Slightly transparent white background for content readability */
+  border-radius: 12px; /* Match paper border-radius */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6) !important;
 }
 
 .debt-header {
@@ -7,6 +24,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  color: white;
 }
 
 /* Summary Dashboard Cards */
@@ -20,13 +38,13 @@
 .debt-summary-card {
   padding: 16px;
   border-radius: 12px;
-  background-color: #f5f5f5 !important; /* Light background for summary cards */
+  background-color: transparent !important; /* Light background for summary cards */
   color: #333 !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 120px;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1) ;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3) !important ;
 }
 
 .debt-summary-card .MuiTypography-h6 {
@@ -70,28 +88,29 @@
   min-width: 300px; /* Minimum width for responsiveness */
   padding: 20px;
   border-radius: 12px;
-  background-color: #FFFFFF !important;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: transparent !important;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
 .person-header {
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+  color: white;
 }
 
 .person-avatar {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: #e0e0e0; /* Placeholder for avatar background */
+  background-color: #e0e0e0 !important; /* Placeholder for avatar background */
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 12px;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #757575;
+  color: #757575 !important;
 }
 
 .person-net-balance {

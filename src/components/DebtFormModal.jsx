@@ -90,7 +90,7 @@ function DebtFormModal({ open, handleClose, onDebtSaved, currentDebt }) {
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-      <DialogTitle>{currentDebt ? 'Debt Entry Edit Karein' : 'Naya Debt Add Karein'}</DialogTitle>
+      <DialogTitle>{currentDebt ? 'Edit Debt Entry' : 'Add New Debt'}</DialogTitle>
       <DialogContent>
         {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
@@ -98,7 +98,7 @@ function DebtFormModal({ open, handleClose, onDebtSaved, currentDebt }) {
             autoFocus
             margin="dense"
             id="personName"
-            label="Vyakti Ka Naam"
+            label="Person Naam"
             type="text"
             fullWidth
             variant="outlined"
@@ -206,10 +206,10 @@ function DebtFormModal({ open, handleClose, onDebtSaved, currentDebt }) {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary" disabled={loading}>
-          Cancel Karein
+          Cancel 
         </Button>
         <Button onClick={handleSubmit} color="secondary" variant="contained" disabled={loading}>
-          {loading ? <CircularProgress size={24} /> : (currentDebt ? 'Update Karein' : 'Add Karein')}
+          {loading ? <CircularProgress size={24} /> : (currentDebt ? 'Update' : 'Add')}
         </Button>
       </DialogActions>
     </Dialog>

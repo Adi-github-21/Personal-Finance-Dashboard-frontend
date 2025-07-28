@@ -105,7 +105,7 @@ function DebtTracking() {
       setDebts(fetchedDebts); // Store all debts, pending and paid
 
     } catch (err) {
-      setError(err.response?.data?.message || 'Debts fetch karne mein dikkat hui.');
+      setError(err.response?.data?.message || 'Problem in fetching Debts.');
     } finally {
       setLoading(false);
     }
@@ -136,24 +136,24 @@ function DebtTracking() {
   };
 
   const handleSettleDebt = async (id) => {
-    if (window.confirm('Kya aap is debt ko settle (Paid) karna chahte hain?')) {
+    if (window.confirm('Do you want to settle(paid) this Debt?')) {
       try {
         // Backend API call to mark as paid
         await API.post(`/debts/${id}/settle`);
         fetchDebts(); // Data refresh karein
       } catch (err) {
-        setError(err.response?.data?.message || 'Debt settle karne mein dikkat hui.');
+        setError(err.response?.data?.message || 'Problem in settleing debt.');
       }
     }
   };
 
   const handleDeleteDebt = async (id) => {
-    if (window.confirm('Kya aap is debt entry ko delete karna chahte hain?')) {
+    if (window.confirm('Do you want to delete this debt?')) {
       try {
         await API.delete(`/debts/${id}`);
         fetchDebts(); // Data refresh karein
       } catch (err) {
-        setError(err.response?.data?.message || 'Debt entry delete karne mein dikkat hui.');
+        setError(err.response?.data?.message || 'Problem in deleting the debt.');
       }
     }
   };
@@ -170,6 +170,7 @@ function DebtTracking() {
   const groupedDebts = groupDebtsByPerson(debts.filter(d => d.status === 'Pending')); // Only pending debts for grouping in UI
 
   return (
+   <Box className="debt-page-wrapper"> 
     <Container maxWidth="lg" className="debt-container">
       <Box className="debt-header">
         <Typography variant="h4" component="h1" className="debt-title">
@@ -183,7 +184,7 @@ function DebtTracking() {
             startIcon={<AddIcon />}
             onClick={handleOpenAddModal}
           >
-            Naya Debt Add Karein
+            Add New Debt
           </Button>
         </Box>
       </Box>
@@ -231,13 +232,13 @@ function DebtTracking() {
       </Grid>
 
       {/* Your Balances Section (Grouped by Person) */}
-      <Typography variant="h5" component="h2" sx={{ mb: 3 }}>
+      <Typography variant="h5" component="h2" color="white" sx={{ mb: 3 }}>
         Your Balances
       </Typography>
       <Box className="balances-section">
         {Object.keys(groupedDebts).length === 0 ? (
           <Typography variant="h6" color="text.secondary" sx={{ textAlign: 'center', mt: 5, width: '100%' }}>
-            Abhi koi pending debts nahi hain. Naya debt add karein!
+            NO pendding Debt Detected. Add New Debt!
           </Typography>
         ) : (
           Object.keys(groupedDebts).map(personName => (
@@ -259,7 +260,7 @@ function DebtTracking() {
                 {groupedDebts[personName].pendingDebts.map(debt => (
                   <Box key={debt._id} className="debt-item">
                     <Box className="debt-item-info">
-                      <Typography variant="body1">{debt.description}</Typography>
+                      <Typography variant="body1" color="#757575">{debt.description}</Typography>
                       <Typography variant="body2">{debt.category} | {new Date(debt.transactionDate).toLocaleDateString()}</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -304,7 +305,7 @@ function DebtTracking() {
       />
 
       {/* Settled Debts History (Optional, can be a separate section/modal) */}
-      <Typography variant="h5" component="h2" sx={{ mt: 5, mb: 3 }}>
+      <Typography variant="h5" component="h2" color="white" sx={{ mt: 5, mb: 3 }}>
         Settled Debts History
       </Typography>
       <Box>
@@ -327,6 +328,7 @@ function DebtTracking() {
         )}
       </Box>
     </Container>
+   </Box> 
   );
 }
 

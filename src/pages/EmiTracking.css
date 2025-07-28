@@ -16,7 +16,7 @@
   max-width: 1280px; /* Adjust as per your maxWidth="lg" in MUI */
   background-color: transparent !important; /* Slightly transparent white background for content readability */
   border-radius: 12px; /* Match paper border-radius */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
 
 .emi-header {
