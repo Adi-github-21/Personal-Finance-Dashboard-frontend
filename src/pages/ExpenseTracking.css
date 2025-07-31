@@ -1,0 +1,199 @@
+.expense-page-wrapper {
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+  background: url('/images/Expense.png') no-repeat center center / cover;
+  background-attachment: fixed; 
+  display: flex; /* Use flex to center content vertically if needed, or just for min-height */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center; /* Center content horizontally */
+  padding-top: 2rem; /* Add some top padding to separate from Navbar */
+  padding-bottom: 2rem; /* Add some bottom padding before footer */
+}
+
+.expense-container {
+  padding: 32px; /* MUI Container default is usually 24px, increasing for more space */
+  width: 100%; /* Ensure container takes full width within its max-width */
+  max-width: 1280px; /* Adjust as per your maxWidth="lg" in MUI */
+  background-color: transparent !important; /* Slightly transparent white background for content readability */
+  border-radius: 12px; /* Match paper border-radius */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.expense-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  color: wheat;
+}
+
+/* Summary Dashboard Cards */
+.expense-summary-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.expense-summary-card1 {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #150e7a !important;
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.expense-summary-card2 {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #058162 !important;
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.expense-summary-card3 {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #7c437d !important;
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.expense-summary-card4 {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #200ca0 !important;
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.expense-summary-card .MuiTypography-h6 {
+  color: #bdbdbd !important; /* Lighter text for labels */
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.expense-summary-card .MuiTypography-h5 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Specific styling for Top Spending Category chart (placeholder) */
+.top-category-chart-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #424242 !important; /* Darker grey */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #bdbdbd !important;
+}
+
+/* Connect with Google Banner (currently placeholder) */
+.connect-banner {
+  background-color: #333 !important; /* Dark background */
+  color: white !important;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.connect-button {
+  margin-top: 15px;
+  text-transform: none;
+  background-color: #20cf66 !important; /* Google Blue */
+  color: white !important;
+}
+
+/* Unified Transaction List */
+.transaction-list-section {
+  background-color: transparent #c71515 !important; /* Dark background */
+  color: white !important;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.transaction-group-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #bdbdbd !important; /* Lighter text */
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #333 !important; /* Darker border */
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-item-left {
+  display: flex;
+  align-items: center;
+}
+
+.transaction-icon {
+  margin-right: 12px;
+  color: #bdbdbd !important; /* Default icon color */
+}
+
+.transaction-icon.manual {
+  color: #FFC107 !important; /* Amber for Manual */
+}
+
+.transaction-icon.automated {
+  color: #00BFA5 !important; /* Teal for Automated */
+}
+
+.transaction-details .MuiTypography-body1 {
+  font-weight: bold;
+  color: white !important;
+}
+
+.transaction-details .MuiTypography-body2 {
+  font-size: 0.85rem;
+  color: #bdbdbd !important;
+}
+
+.transaction-amount {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white !important;
+}
+
+/* Floating Action Button (FAB) */
+.fab-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it's above other content */
+}
