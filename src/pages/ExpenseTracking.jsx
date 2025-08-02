@@ -104,7 +104,7 @@ function ExpenseTracking() {
         const expDate = new Date(exp.transactionDate);
         return expDate.getMonth() === now.getMonth() && expDate.getFullYear() === now.getFullYear();
       });
-
+      
       // Calculate Summary Metrics
       let sumMonthly = 0;
       let maxBuy = { amount: 0, description: 'N/A' };
@@ -278,7 +278,7 @@ function ExpenseTracking() {
 
       {/* Connect with Google Banner (Placeholder) */}
       <Box className="connect-banner">
-        <Typography variant="h6" sx={{ mb: 1 }}>
+        <Typography variant="h5" component="h1" sx={{ mb: 1 }}>
           Tired of manual entries? Connect your Gmail to automatically sync UPI and card expenses.
         </Typography>
         <Button variant="contained" className="connect-button" startIcon={<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png" alt="Google Logo" style={{ height: '20px', marginRight: '8px' }} />}>
