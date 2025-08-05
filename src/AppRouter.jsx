@@ -11,6 +11,7 @@ import FixedDeposits from './pages/FixedDeposits.jsx';
 import EmiTracking from './pages/EmiTracking.jsx';
 import DebtTracking from './pages/DebtTracking.jsx';
 import ExpenseTracking from './pages/ExpenseTracking.jsx';
+import SavingsGoals from './pages/SavingsGoals.jsx';
 import MainLayout from './layouts/MainLayout.jsx';
 
 // PrivateRoute component jo check karega ki user logged in hai ya nahi
@@ -112,7 +113,7 @@ function AppRouter() {
           element={
             <PrivateRoute>
               <MainLayout>
-                <Box sx={{ mt: 4, textAlign: 'center' }}><Typography variant="h5">Savings Goals Page</Typography></Box>
+                <SavingsGoals />
               </MainLayout>
             </PrivateRoute>
           }
