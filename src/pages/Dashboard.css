@@ -1,0 +1,60 @@
+/* personal-finance-dashboard-frontend/src/pages/Dashboard.css */
+
+.dashboard-container {
+  padding: 32px;
+}
+
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+/* Summary Cards */
+.summary-card-item .MuiCard-root {
+  border-radius: 12px; /* Consistent rounded corners */
+  min-height: 140px; /* Ensure cards have consistent height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2) !important; /* Slightly stronger shadow */
+}
+
+.summary-card-item .MuiCardContent-root {
+  padding: 20px;
+}
+
+.summary-card-item .MuiTypography-h6 {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7) !important; /* Lighter text for labels */
+  margin-bottom: 8px;
+}
+
+.summary-card-item .MuiTypography-h5 {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+/* Charts Section */
+.charts-section-header {
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+.chart-paper {
+  padding: 20px;
+  border-radius: 12px;
+  height: 400px; /* Fixed height for consistency */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightpink !important; /* Dark background for charts */
+  color: white !important; /* Text color inside chart paper */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+.chart-placeholder-text {
+  color: #bdbdbd !important; /* Lighter text for placeholders */
+}
+
+/* Specific chart styling overrides if needed */
+/* Chart.js will handle most of the internal styling via options */
