@@ -84,6 +84,9 @@ function ExpenseTracking() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [currentExpenseToEdit, setCurrentExpenseToEdit] = useState(null);
+  const [googleConnected, setGoogleConnected] = useState(false); // Google connection status
+  const [syncing, setSyncing] = useState(false); // Syncing status
+  const [syncMessage, setSyncMessage] = useState(''); // Sync message
 
   // For Summary Dashboard
   const [totalMonthlyExpense, setTotalMonthlyExpense] = useState(0);
@@ -152,8 +155,18 @@ function ExpenseTracking() {
     }
   };
 
+  // Check Google connection status on mount
   useEffect(() => {
     fetchExpenses();
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('google_connected') === 'true') {
+      setGoogleConnected(true);
+      setSyncMessage('Google account successfully connected!');
+      // URL se query parameter hatayein
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+    // You might want to check for an existing GoogleToken in DB here
+    // by making an API call to /api/google/status or similar
   }, []);
 
   const handleOpenAddModal = () => {
@@ -184,6 +197,48 @@ function ExpenseTracking() {
       } catch (err) {
         setError(err.response?.data?.message || 'Problem in deleting Expense.');
       }
+    }
+  };
+
+  // Google Connect Handler
+  const handleConnectGoogle = () => {
+  // Get the token from localStorage
+  const token = localStorage.getItem('token');
+
+  // If there's no token, show an error and stop.
+  if (!token) {
+    setError('You must be logged in to connect your Google account.');
+    // It's good practice to clear any old sync messages
+    setSyncMessage(''); 
+    return;
+  }
+
+  // Use the baseURL from your configured API instance and append the token
+  const connectUrl = `${API.defaults.baseURL}/google/connect?token=${token}`;
+  
+  // Log the URL to the console for debugging to make sure it's correct
+  console.log('Redirecting to:', connectUrl); 
+  
+  // Redirect the browser to the new URL
+  window.location.href = connectUrl;
+};
+
+  // Sync Expenses Handler
+  const handleSyncExpenses = async () => {
+    setSyncing(true);
+    setSyncMessage('');
+    setError('');
+    try {
+      const res = await API.get('/google/sync-expenses');
+      setSyncMessage(res.data.message);
+      fetchExpenses(); // Expenses refresh karein
+    } catch (err) {
+      setError(err.response?.data?.message || 'Expenses sync karne mein dikkat hui.');
+      if (err.response?.status === 401) { // Token expired case
+        setGoogleConnected(false); // Reconnect karne ke liye banner dikhao
+      }
+    } finally {
+      setSyncing(false);
     }
   };
 
@@ -276,15 +331,29 @@ function ExpenseTracking() {
         </Grid>
       </Grid>
 
-      {/* Connect with Google Banner (Placeholder) */}
-      <Box className="connect-banner">
-        <Typography variant="h5" component="h1" sx={{ mb: 1 }}>
-          Tired of manual entries? Connect your Gmail to automatically sync UPI and card expenses.
-        </Typography>
-        <Button variant="contained" className="connect-button" startIcon={<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png" alt="Google Logo" style={{ height: '20px', marginRight: '8px' }} />}>
-          Connect with Google
-        </Button>
-      </Box>
+      {/* Connect with Google Banner */}
+      {!googleConnected ? (
+        <Box className="connect-banner">
+          <Typography variant="h6" sx={{ mb: 1 }}>
+            Tired of manual entries? Connect your Gmail to automatically sync UPI and card expenses.
+          </Typography>
+          <Button variant="contained" className="connect-button" onClick={handleConnectGoogle} startIcon={<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png" alt="Google Logo" style={{ height: '20px', marginRight: '8px' }} />}>
+            Connect with Google
+          </Button>
+        </Box>
+      ) : (
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            startIcon={syncing ? <CircularProgress size={20} color="inherit" /> : <FlashOnIcon />}
+            onClick={handleSyncExpenses}
+            disabled={syncing}
+          >
+            {syncing ? 'Syncing...' : 'Sync Expenses from Gmail'}
+          </Button>
+        </Box>
+      )}
 
       {/* Unified Transaction List */}
       <Box className="transaction-list-section">

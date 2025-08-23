@@ -31,8 +31,10 @@ function Login() {
         <Typography component="h1" variant="h5">
           Login Karein
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box sx={{ mt: 3 }}>
           {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+
+          <form onSubmit={handleSubmit}>
           <TextField
             margin="normal"
             required
@@ -65,6 +67,7 @@ function Login() {
           >
             Login Karein
           </Button>
+          </form>
         </Box>
       </Box>
     </Container>
