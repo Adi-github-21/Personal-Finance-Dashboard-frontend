@@ -1,18 +1,19 @@
+// personal-finance-dashboard-frontend/src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, Box, useMediaQuery, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'; // For Add New button
-import NotificationsIcon from '@mui/icons-material/Notifications'; // For Notifications
+// AddCircleOutlineIcon ki jagah ExploreIcon ya ArrowForwardIcon use karenge
+import ExploreIcon from '@mui/icons-material/Explore'; // <-- Naya icon
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar({ toggleDrawer, isLoggedIn, userName, onLogout }) {
   const navigate = useNavigate();
   const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down('md')); // Ab iski zaroorat nahi hai yahan
 
   const [anchorEl, setAnchorEl] = useState(null); // For Profile/User Menu
-  const [addMenuAnchorEl, setAddMenuAnchorEl] = useState(null); // For Add New Menu
+  // const [addMenuAnchorEl, setAddMenuAnchorEl] = useState(null); // <-- Ab iski zaroorat nahi
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,34 +23,46 @@ function Navbar({ toggleDrawer, isLoggedIn, userName, onLogout }) {
     setAnchorEl(null);
   };
 
-  const handleAddMenu = (event) => {
-    setAddMenuAnchorEl(event.currentTarget);
-  };
-
-  const handleAddMenuClose = () => {
-    setAddMenuAnchorEl(null);
-  };
+  // handleAddMenu aur handleAddMenuClose ki ab zaroorat nahi
+  // const handleAddMenu = (event) => {
+  //   setAddMenuAnchorEl(event.currentTarget);
+  // };
+  // const handleAddMenuClose = () => {
+  //   setAddMenuAnchorEl(null);
+  // };
 
   const handleLogout = () => {
     handleClose();
-    onLogout(); // Parent component ko logout handle karne ke liye call karein
+    onLogout();
   };
 
-  const handleDashboardClick = () => {
-    navigate('/dashboard'); // Dashboard par navigate karein
-  };
+  // handleDashboardClick ki ab zaroorat nahi, Drawer se access hoga
+  // const handleDashboardClick = () => {
+  //   navigate('/dashboard');
+  // };
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar
+      position="absolute"
+      elevation={0}
+      sx={{
+        background: `linear-gradient(to right, ${theme.palette.background.paper}, ${theme.palette.primary.light}) !important`,
+        color: theme.palette.text.primary, 
+        backdropFilter: 'blur(10px) !important',
+        borderRadius: '30px',
+        marginTop: '10px',
+        borderBottom: '1px solid rgba(26, 154, 239, 0.92) !important',
+      }}
+    >
       <Toolbar>
         {/* Left Side: Logo / Brand Name and Hamburger Icon */}
-        {isLoggedIn && ( // Jab logged in ho, tab hamesha hamburger icon dikhega
+        {isLoggedIn && (
           <IconButton
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-            onClick={toggleDrawer}
+            onClick={toggleDrawer} // <-- Hamburger icon Drawer kholega
           >
             <MenuIcon />
           </IconButton>
@@ -68,32 +81,26 @@ function Navbar({ toggleDrawer, isLoggedIn, userName, onLogout }) {
               Features
             </Button>
             <Button color="inherit" component={Link} to="/login">
-              Login Karein
+              Login
             </Button>
             <Button variant="contained" color="secondary" component={Link} to="/register" sx={{ ml: 2 }}>
-              Register Karein
+              Register
             </Button>
           </Box>
         ) : (
           // When Logged In
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            {/* Desktop par Dashboard button ki ab zaroorat nahi, Drawer se access hoga */}
-            {/* {!isMobile && (
-              <Button color="inherit" onClick={handleDashboardClick} sx={{ mr: 2 }}>
-                Dashboard
-              </Button>
-            )} */}
-
-            {/* Add New Button/Dropdown */}
+            {/* "GO TO" Button jo Drawer kholega */}
             <Button
               color="inherit"
-              startIcon={<AddCircleOutlineIcon />}
-              onClick={handleAddMenu}
+              startIcon={<ExploreIcon />} // <-- Naya icon
+              onClick={toggleDrawer} // <-- Drawer kholega
               sx={{ mr: 1 }}
             >
-              Add New
+              GO TO
             </Button>
-            <Menu
+            {/* Add New Menu ki ab zaroorat nahi */}
+            {/* <Menu
               id="add-menu-appbar"
               anchorEl={addMenuAnchorEl}
               anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -105,7 +112,7 @@ function Navbar({ toggleDrawer, isLoggedIn, userName, onLogout }) {
               <MenuItem onClick={handleAddMenuClose}>Add Expense</MenuItem>
               <MenuItem onClick={handleAddMenuClose}>Add Income</MenuItem>
               <MenuItem onClick={handleAddMenuClose}>Add Transaction</MenuItem>
-            </Menu>
+            </Menu> */}
 
             {/* Notifications (Optional) */}
             <IconButton color="inherit" sx={{ mr: 1 }}>

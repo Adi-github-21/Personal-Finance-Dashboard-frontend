@@ -5,6 +5,7 @@ import './index.css'; // Basic CSS
 import { ThemeProvider } from '@mui/material/styles'; // ThemeProvider import kiya
 import CssBaseline from '@mui/material/CssBaseline'; // CssBaseline import kiya
 import theme from './theme'; // Apna custom theme import kiya
+import ExploreIcon from '@mui/icons-material/Explore';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

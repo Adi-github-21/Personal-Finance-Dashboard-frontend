@@ -9,6 +9,8 @@ function MainLayout({ children }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const navigate = useNavigate();
 
+  const NAVBAR_HEIGHT = '0px';
+
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
@@ -27,7 +29,7 @@ function MainLayout({ children }) {
 
   return (
     // Main container for the entire layout
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <Box>
       {/* Navbar component */}
       <Navbar
         toggleDrawer={toggleDrawer}
@@ -48,10 +50,14 @@ function MainLayout({ children }) {
       {/* Main content area that grows to fill available space */}
       {/* Removed 'p: 3' from here. Page-specific padding should be handled within each page component (e.g., BankAccounts.jsx's Container). */}
       {/* Removed <Toolbar /> as it was creating extra space below the Navbar. */}
-      <Box component="main" sx={{ flexGrow: 1 }}>
-        {children} {/* Yahan page ka content render hoga */}
+      <Box
+        component="main"
+        sx={{
+          paddingTop: NAVBAR_HEIGHT,
+        }}
+      >
+        {children}
       </Box>
-
       {/* Footer component */}
       <Footer />
     </Box>

@@ -273,7 +273,7 @@ function Dashboard() {
           <Typography variant="body1" className="intro-text">
             Welcome to the complete picture. Every transaction, investment, and goal, unified and simplified. </Typography>
            <Typography variant="body1" className="intro-text"> 🕵️‍♂️See Everything: Your real-time financial snapshot.</Typography>
-           <Typography variant="body1" className="intro-text">📈Track What Matters: Monitor your growth with intelligent visuals.</Typography>
+           <Typography variant="body1" className="intro-text">🤖Automatic UPI Expense Tracker: Add your UPI Gmail in expense tracking & track our expense.</Typography>
            <Typography variant="body1" className="intro-text">🧠Act with Insight: Turn complex data into smart, simple moves.</Typography> 
            <Typography variant="body1" className="intro-text">❤️This is your financial story, told with precision and style.</Typography> 
         </Box>

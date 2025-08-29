@@ -10,6 +10,7 @@
 
 .dashboard-banner-container {
   width: calc(100% + 48px ); 
+  margin-top: 50px;
   margin-left: -24px;
   margin-right: -24px !important;
   margin-bottom: 24px !important;

@@ -25,9 +25,30 @@ function AppRouter() {
     <Router>
       <Routes>
         {/* Public Routes (Login, Register, Landing) - No MainLayout here */}
-        <Route path="/" element={<Navigate to="/login" />} /> {/* Default to login */}
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <MainLayout> {/* <-- MainLayout add kiya */}
+              <Navigate to="/login" />
+            </MainLayout>
+          }
+        /> 
+        <Route
+          path="/register"
+          element={
+            <MainLayout> {/* <-- MainLayout add kiya */}
+              <Register />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <MainLayout> {/* <-- MainLayout add kiya */}
+              <Login />
+            </MainLayout>
+          }
+        />
         <Route path="/features" element={
           <Box sx={{ mt: 8, textAlign: 'center' }}>
             <Typography variant="h4">Features Page (Not Logged In)</Typography>

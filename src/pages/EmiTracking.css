@@ -11,6 +11,7 @@
 }
 
 .emi-container {
+  margin-top: 70px;
   padding: 32px; /* MUI Container default is usually 24px, increasing for more space */
   width: 100%; /* Ensure container takes full width within its max-width */
   max-width: 1280px; /* Adjust as per your maxWidth="lg" in MUI */
