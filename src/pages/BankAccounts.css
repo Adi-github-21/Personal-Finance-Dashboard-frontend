@@ -17,9 +17,8 @@
 /* Top Banner/Card */
 .bank-accounts-banner {
   position: relative;
-  /* Background Image */
-  background: url('https://www.canva.com/design/DAGtKIiEJkk/kU_gZO3kANIOFjjJCVbi9w/view?utm_content=DAGtKIiEJkk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3af343e3c8') no-repeat center center / cover;
-  color: white;
+  background: url('images/Bankaccount.jpg') no-repeat center center / cover;
+  color: rgb(39, 40, 42) ;
   margin-top: 70px !important;
   padding: 5rem 4rem; 
   padding-bottom: 5rem; /* md:p-12 */
@@ -27,7 +26,7 @@
   border-top-right-radius: 2rem;
   border-bottom-left-radius: 2rem; /* rounded-b-3xl */
   border-bottom-right-radius: 2rem; /* rounded-b-3xl */
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important; /* shadow-lg */
   overflow: hidden;
 }
 
@@ -37,16 +36,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.2; /* Keep shapes but make them subtle over image */
+  opacity: 0.0;
 }
 
 .bank-accounts-banner-content {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+  position: relative !important;
+  z-index: 10 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: center !important;
 }
 
 @media (min-width: 768px) { /* md breakpoint */
@@ -63,8 +63,8 @@
   background-color: white;
   color: #2563eb; /* text-blue-700 */
   font-weight: 600; /* font-semibold */
-  border-radius: 9999px; /* rounded-full */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  border-radius: 9999px !important; /* rounded-full */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important; /* shadow-md */
   transition: all 0.3s ease-in-out;
 }
 

@@ -2,22 +2,18 @@
 
 /* NEW: Wrapper for the entire Investments page to apply full-page background */
 .investments-page-wrapper {
-  min-height: 100vh; /* Ensure it covers the full viewport height */
-  background: url('https://wallpapers.com/images/hd/abstract-grid-pattern-backdrop-1urnmdgfwdybkke0.jpg') no-repeat center center / cover;
-  background-attachment: fixed; /* Optional: Makes the background fixed while scrolling */
-  display: flex; /* Use flex to center content vertically if needed, or just for min-height */
-  flex-direction: column; /* Stack children vertically */
-  justify-content: flex-start; /* Align content to the top */
-  align-items: center; /* Center content horizontally */
-  padding-top: 2rem; /* Add some top padding to separate from Navbar */
-  padding-bottom: 2rem; /* Add some bottom padding before footer */
+  padding: 24px ;
+  background: linear-gradient(to bottom, #132448 45%, #2fae4f 100%) !important;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box; 
 }
 
 
 /* Main Container (inside the wrapper) */
 .investments-container {
   /* Background removed from here */
-  margin-top: 50px !important;
+  margin-top: 70px !important;
   padding: 32px; /* MUI Container default is usually 24px, increasing for more space */
   width: 100%; /* Ensure container takes full width within its max-width */
   max-width: 1280px; /* Adjust as per your maxWidth="lg" in MUI */
@@ -25,7 +21,7 @@
   background: url('https://www.canva.com/design/DAGtKIiEJkk/kU_gZO3kANIOFjjJCVbi9w/view?utm_content=DAGtKIiEJkk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3af343e3c8') no-repeat center center / cover;
   /* background-color: rgba(255, 255, 255, 0.9); */
   border-radius: 12px; /* Match paper border-radius */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Add a subtle shadow */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important; /* Add a subtle shadow */
 }
 
 .investments-header {
@@ -41,14 +37,11 @@
 .investments-table-paper {
   border-radius: 12px; /* Rounded corners for the paper */
   overflow: hidden; /* Ensures content respects border-radius */
+  background: linear-gradient(to bottom,  #c5b3d2 80%, #06b6d4 100%) !important;
 }
 
-/* .investments-table {
-   Basic table styles
-} */
-
 .investments-table-head .MuiTableCell-root {
-  background-color: #f5f5f5; /* Light grey background for table header */
+  background: linear-gradient(to top,  #c5b3d2 50%, #06b6d4 100%) !important; /* Light grey background for table header */
   font-weight: bold;
   color: #333;
   padding: 12px 16px; /* Adjust padding if needed */

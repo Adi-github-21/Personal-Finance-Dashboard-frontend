@@ -9,9 +9,10 @@ function Footer() {
         py: 3,
         px: 2,
         mt: 'auto', // Footer ko bottom par push karega
-        bgcolor: 'primary.dark', // Theme se dark primary color
-        color: 'white',          // White text
+        background: 'linear-gradient(to right, #2d91f5ff, #c2e9fb)', // Theme se dark primary color
+        color: '#333',          // White text
         textAlign: 'center',
+        borderTop: '1px solid rgba(7, 17, 23, 0.34) !important',
       }}
     >
       <Container maxWidth="lg">
