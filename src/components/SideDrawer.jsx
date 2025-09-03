@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography, Divider, Box } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography, Divider, useTheme, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
@@ -7,16 +7,14 @@ import ShowChartIcon from '@mui/icons-material/ShowChart';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import SavingsIcon from '@mui/icons-material/Savings';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import LoopIcon from '@mui/icons-material/Loop'; // For EMI
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt'; // For Debt Tracking
-import SettingsIcon from '@mui/icons-material/Settings';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const drawerWidth = 240; // Drawer ki चौड़ाई
+const drawerWidth = 240; 
 
 function SideDrawer({ open, toggleDrawer, onLogout }) {
+  const theme = useTheme();
   const navItems = [
     { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
     { divider: true },
@@ -33,11 +31,6 @@ function SideDrawer({ open, toggleDrawer, onLogout }) {
     { text: 'Expense Tracking', icon: <CreditCardIcon />, path: '/expense-tracking' },
     { text: 'Savings Goals', icon: <SavingsIcon />, path: '/savings-goals' },
     { divider: true },
-    { text: 'Reports / Insights', icon: <ReceiptLongIcon />, path: '/reports' },
-    { divider: true },
-    { header: 'Other' },
-    { text: 'Settings', icon: <SettingsIcon />, path: '/settings' },
-    { text: 'Help / Support', icon: <HelpOutlineIcon />, path: '/help' },
     { text: 'Logout', icon: <LogoutIcon />, action: onLogout }, // Logout action
   ];
 
@@ -55,7 +48,7 @@ function SideDrawer({ open, toggleDrawer, onLogout }) {
         [`& .MuiDrawer-paper`]: {
           width: drawerWidth,
           boxSizing: 'border-box',
-          bgcolor: 'background.paper', // Theme se background color
+          background: `linear-gradient(to right, ${theme.palette.background.paper}, ${theme.palette.primary.light})`, // Theme se background color
           color: 'text.primary',      // Theme se text color
         },
       }}
@@ -75,8 +68,6 @@ function SideDrawer({ open, toggleDrawer, onLogout }) {
               {item.header}
             </Typography>
           ) : (
-            // <-- Yahan 'ListItem' ko hamesha button={true} rakhenge
-            // Aur Link ko ListItem ke andar wrap karenge
             <ListItem
               key={item.text}
               button // Hamesha button ki tarah behave karega

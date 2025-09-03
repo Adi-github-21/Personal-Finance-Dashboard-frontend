@@ -138,37 +138,7 @@ function AppRouter() {
               </MainLayout>
             </PrivateRoute>
           }
-        />
-        <Route
-          path="/reports"
-          element={
-            <PrivateRoute>
-              <MainLayout>
-                <Box sx={{ mt: 4, textAlign: 'center' }}><Typography variant="h5">Reports / Insights Page</Typography></Box>
-              </MainLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <PrivateRoute>
-              <MainLayout>
-                <Box sx={{ mt: 4, textAlign: 'center' }}><Typography variant="h5">Settings Page</Typography></Box>
-              </MainLayout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/help"
-          element={
-            <PrivateRoute>
-              <MainLayout>
-                <Box sx={{ mt: 4, textAlign: 'center' }}><Typography variant="h5">Help / Support Page</Typography></Box>
-              </MainLayout>
-            </PrivateRoute>
-          }
-        />
+        /> 
       </Routes>
     </Router>
   );

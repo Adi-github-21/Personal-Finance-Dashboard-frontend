@@ -143,25 +143,21 @@
 
 /* Connect with Google Banner (currently placeholder) */
 .connect-banner {
-  background: url('/images/ExpenseBanner.jpg') no-repeat center center / cover;; /* Dark background */
-  /* background-attachment: fixed;  */
+  background: url('/images/ExpenseBanner.png') no-repeat center center / cover;
   display: flex;
-  color: white !important;
   height: 270px;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 24px;
   margin-bottom: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  color: #424242 !important;
 }
 
 .connect-button {
-  margin-top: 100px !important;
+  margin-top: 120px !important;
   text-transform: none;
-  background-color: #20cf66 !important; /* Google Blue */
+  background: linear-gradient(to bottom, #1f479e 30%, #c41820 100%) !important;
   color: white !important;
 }
 
